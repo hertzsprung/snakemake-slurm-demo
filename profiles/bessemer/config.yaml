@@ -1,7 +1,15 @@
-restart-times: 3
+jobs: 2 # max number of concurrent jobs submitted to slurm
 jobscript: "slurm-jobscript.sh"
 cluster: "slurm-submit.py"
 cluster-status: "slurm-status.py"
 max-jobs-per-second: 1
 max-status-checks-per-second: 10
 local-cores: 1
+
+# tell slurm the location of the binary
+# not strictly necessary when the binary is located relative to the working dir
+config: snakemake_slurm_demo_cpp=./snakemake-slurm-demo-cpp
+
+# with the default of 5 seconds, snakemake intermittently fails to find
+# the outputs of sbatch jobs, so I've increased it
+latency-wait: 60 # seconds

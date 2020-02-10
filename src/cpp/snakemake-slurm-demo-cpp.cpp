@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    printf("snakemake-slurm-demo-cpp\n");
+    printf("hello from snakemake-slurm-demo-cpp\n");
     printf("expected omp_threads %s\n", argv[1]);
     printf("actual omp_threads %i\n", omp_get_max_threads());
     return EXIT_SUCCESS;
