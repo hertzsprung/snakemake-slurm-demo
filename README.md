@@ -1,12 +1,16 @@
-This toy snakemake workflow is designed to run on The University of Sheffield bessemer HPC cluster using slurm.
+This toy snakemake workflow is designed to run on The University of Sheffield bessemer HPC cluster using slurm.  Currently, it contains an OpenMP C++ app, `snakemake-slurm-demo-cpp`.  The aim is to run the app with 1, 2 or 4 cores, configured by slurm's `--ntasks-per-node` parameter.
 
 # Running on bessemer HPC cluster
 
     srun --pty bash -i
     module load Anaconda3/2019.07
+    
     conda create -c bioconda -c conda-forge -n snakemake python=3.7 snakemake
     conda activate snakemake
-    snakemake --profile profiles/bessemer
+    
+    make # will build snakemake-slurm-demo-cpp
+    # -p flag prints out shell commands that are called
+    snakemake --profile profiles/bessemer -p
     
 # Shortcomings of snakemake slurm profile
 Available in its own [GitHub repo](https://github.com/Snakemake-Profiles/slurm).  You use `cookiecutter` to make a customised copy of the python scripts, see `profiles/bessemer`.
