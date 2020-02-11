@@ -2,6 +2,7 @@ This toy snakemake workflow is designed to run on The University of Sheffield be
 
 # Running on bessemer HPC cluster
 
+```bash
     srun --pty bash -i
     module load Anaconda3/2019.07
     
@@ -11,6 +12,7 @@ This toy snakemake workflow is designed to run on The University of Sheffield be
     make # will build snakemake-slurm-demo-cpp
     # -p flag prints out shell commands that are called
     snakemake --profile profiles/bessemer -p
+```
     
 # Shortcomings of snakemake slurm profile
 Available in its own [GitHub repo](https://github.com/Snakemake-Profiles/slurm).  You use `cookiecutter` to make a customised copy of the python scripts, see `profiles/bessemer`.
@@ -23,12 +25,14 @@ As fas as I can tell, it doesn't support:
 
 From [OpenMP examples](https://www.hpc2n.umu.se/documentation/batchsystem/openmp-examples):
 
+```bash
     if [ -n "$SLURM_CPUS_PER_TASK" ]; then
       omp_threads=$SLURM_CPUS_PER_TASK
     else
       omp_threads=1
     fi
     export OMP_NUM_THREADS=$omp_threads
+```
 
 # Related resources
 * My stackoverflow question: [Setting PATH when invoking sbatch](https://stackoverflow.com/questions/60100550/setting-path-when-invoking-sbatch), currently unanswered
