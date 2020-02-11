@@ -19,5 +19,16 @@ As fas as I can tell, it doesn't support:
 * `gres` option needed for GPU runs on Bessemer.  I know how to bodge this in, but I haven't done a good enough job for upstreaming my changes.
 * output/error files are just plain strings and don't support snakemake wildcards, which would associate a logfile with its snakemake target
 
+# Configuring OpenMP in slurm job script
+
+From [OpenMP examples](https://www.hpc2n.umu.se/documentation/batchsystem/openmp-examples):
+
+    if [ -n "$SLURM_CPUS_PER_TASK" ]; then
+      omp_threads=$SLURM_CPUS_PER_TASK
+    else
+      omp_threads=1
+    fi
+    export OMP_NUM_THREADS=$omp_threads
+
 # Related resources
 * My stackoverflow question: [Setting PATH when invoking sbatch](https://stackoverflow.com/questions/60100550/setting-path-when-invoking-sbatch), currently unanswered
